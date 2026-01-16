@@ -60,7 +60,7 @@ public class ObjectView implements View {
     public ObjectView(int maxObjectLength, ObjectVO objectVO) {
         this(objectVO.getObject(), objectVO.expandOrDefault(), maxObjectLength);
     }
- 
+
     public ObjectView(Object object, int deep) {
         this(object, deep, MAX_OBJECT_LENGTH);
     }
@@ -634,6 +634,11 @@ public class ObjectView implements View {
                     }
 
                     for (Field field : fields) {
+
+                        if (GlobalOptions.ignoreJacocoField && field.getName().startsWith("$jacocoData")) {
+                            continue;
+                        }
+
 
                         field.setAccessible(true);
 

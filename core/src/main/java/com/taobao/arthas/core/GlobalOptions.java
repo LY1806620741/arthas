@@ -123,6 +123,17 @@ public class GlobalOptions {
     public static volatile boolean printParentFields = true;
 
     /**
+     * 是否忽略jacoco增强的field
+     * @see com.taobao.arthas.core.view.ObjectView
+     */
+    @Option(level = 1,
+            name = "ignore-jacoco-field",
+            summary = "Option to filter jacoco count in class",
+            description = "This option enables filter jacoco count in class, default value true."
+    )
+    public static volatile boolean ignoreJacocoField = true;
+
+    /**
      * 是否打开verbose 开关
      */
     @Option(level = 1,
