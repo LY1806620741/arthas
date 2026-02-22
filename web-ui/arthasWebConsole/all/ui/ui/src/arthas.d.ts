@@ -506,6 +506,7 @@ type CommandResult = {
   retransformCount: number;
   retransformEntries: never;
   retransformClasses: string[];
+  ids: string[];
   type: "retransform";
 } | {
   dumpedClasses: {

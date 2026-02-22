@@ -46,6 +46,7 @@ const onSubmit = () => {
       retransformRes.clear()
       retransformRes.set("retransformClass", result.retransformClasses)
       retransformRes.set("retransformCount", [result.retransformCount.toString()])
+      retransformRes.set("ids", result.retransformEntries.map(item => item.id.toString()))
     }
   })
 }
