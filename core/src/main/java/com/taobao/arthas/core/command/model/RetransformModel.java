@@ -3,6 +3,7 @@ package com.taobao.arthas.core.command.model;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.taobao.arthas.core.command.klass100.RetransformCommand.RetransformEntry;
 
@@ -27,6 +28,10 @@ public class RetransformModel extends ResultModel {
 
 //    List<ClassVO> classVOs = ClassUtils.createClassVOList(matchedClasses);
     public RetransformModel() {
+    }
+
+    public List<Integer> getIds() {
+        return retransformEntries.stream().map(RetransformEntry::getId).collect(Collectors.toList());
     }
 
     public void addRetransformClass(String className) {
