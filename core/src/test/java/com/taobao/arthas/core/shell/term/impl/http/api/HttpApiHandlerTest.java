@@ -38,7 +38,7 @@ class HttpApiHandlerTest {
         // prepare HTTP request body
         String body = JSON.toJSONString(new Object() {
             public final String action = "exec";
-            public final String command = "retransform -l";
+            public final String command = "retransform target/classes/com/taobao/arthas/core/GlobalOptions.class";
             public final Integer execTimeout = 5000;
         });
 
@@ -65,7 +65,8 @@ class HttpApiHandlerTest {
 
         // expecting succeeded state and jobStatus STOPPED in returned JSON
         assertThat(respJson).contains("\"state\":\"SUCCEEDED\"");
-        JSONObject jsonObject = JSON.parseObject(respJson).getJSONObject("body").getJSONArray("results").getJSONObject(0);;
+        JSONObject jsonObject = JSON.parseObject(respJson).getJSONObject("body").getJSONArray("results").getJSONObject(0);
         assertThat(jsonObject.containsKey("ids")).isTrue();
+        assertThat(jsonObject.getJSONArray("ids").get(0)).isEqualTo(1);
     }
 }
